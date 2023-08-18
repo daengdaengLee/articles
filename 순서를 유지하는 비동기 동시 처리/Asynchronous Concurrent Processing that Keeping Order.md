@@ -1,5 +1,7 @@
 # Asynchronous Concurrent Processing that Keeping Order
 
+Separate asynchronous task execution and completion handling with a queue in between
+
 - Upon receiving input, create a task object and add it to the queue.
 - Execute asynchronous tasks.
 - Register the logic that update the task object's state, dequeue and output the completed task object when an
