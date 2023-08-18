@@ -1,12 +1,12 @@
-# Asynchronous Concurrent Processing with Maintained Order
+# Asynchronous Concurrent Processing that Keeping Order
 
 - Upon receiving input, create a task object and add it to the queue.
 - Execute asynchronous tasks.
-- When an asynchronous task is completed, update the task object's status, and register the logic to retrieve and output
-  the completed task object from the queue.
+- Register the logic that update the task object's state, dequeue and output the completed task object when an
+  asynchronous task is completed.
 - Separate the logic for executing asynchronous tasks and processing completed tasks, allowing the next asynchronous
   task to be executed without waiting for task completion.
-- Since a queue is used, the order can be maintained.
+- Since a queue is used, can keep the order.
 
 ## Show me the code:
 
@@ -35,7 +35,7 @@ export function run<TInput, TOutput>(params: {
 
         // Execute the asynchronous task and register the function to run upon completion.
         params.f(value).then((value) => {
-            // Update the task object's status.
+            // Update the task object's state.
             taskWrapper.task = {done: true, value: value};
             // Execute the output function.
             tick();
@@ -52,7 +52,7 @@ export function run<TInput, TOutput>(params: {
             taskWrapper = queue.at(0);
         }
 
-        // Close the output event stream when all tasks are completed and the input event stream is closed.
+        // Close the destination event stream when all tasks are completed and the source event stream is closed.
         if (queue.length === 0 && isClosed) {
             params.source.off(`data`, handler);
             destination.emit(`close`);
@@ -61,8 +61,8 @@ export function run<TInput, TOutput>(params: {
 
     params.source.on(`data`, handler);
     params.source.once(`close`, () => {
-        // Update upon closure of the input event stream and execute the output function.
-        // !!Caution!! Immediate closure of the output event stream could lead to loss of incomplete tasks.
+        // Update upon closure of the source event stream and execute the output function.
+        // !!Caution!! Immediate closure of the destination event stream could lead to loss of incomplete tasks.
         isClosed = true;
         tick();
     });
