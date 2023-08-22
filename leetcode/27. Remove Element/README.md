@@ -20,3 +20,25 @@
     - 앞 -> 뒤 커서가 지나온 곳은 모두 `val` 이 아닌 값
     - 뒤 -> 앞 커서가 지나온 곳은 모두 `val` 인 값
 - 앞 -> 뒤 커서 값이 `val` 이 아닌 값 개수
+
+## Pseudocode
+
+```text
+i = 0 // 앞 -> 뒤 커서
+j = length(nums) - 1 // 뒤 -> 앞 커서
+
+while i < j:
+  while nums[i] != val:
+    i += 1
+    continue
+  
+  while nums[j] == val:
+    j -= 1
+    continue
+
+  nums[i] ^= nums[j]
+  nums[j] ^= nums[i]
+  nums[i] ^= nums[j]
+  
+i 반환
+```
