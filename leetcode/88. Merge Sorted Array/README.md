@@ -17,8 +17,10 @@
 - `m + n` 순회하면서 `num1`, `num2` 배열의 첫 번째 원소 비교
 - 둘 중 작은 원소를 뽑아서 결과 배열에 추가
 - 두 배열의 유효한 원소를 모두 뽑아낼 때까지 반복
+- `num1`, `num2` 모두 이미 non-decreasing order 로 정렬되어 있기 때문에 첫 원소들 중 작은쪽이 남은 원소 전체 중 가장 작음
+- 따라서 non-decreasing order 순으로 원소를 뽑아낼 수 있음
 
-## Pseudocode 
+## Pseudocode
 
 ```text
 result = { 길이 m + n 배열 }
