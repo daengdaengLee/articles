@@ -42,3 +42,34 @@ while i < j:
   
 i 반환
 ```
+
+## Implementation
+
+```java
+// runtime : java 17
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int i = 0;
+        int j = nums.length - 1;
+
+        while (i < j) {
+            if (nums[i] != val) {
+                i += 1;
+                continue;
+            }
+
+            if (nums[j] == val) {
+                j -= 1;
+                continue;
+            }
+
+            nums[i] ^= nums[j];
+            nums[j] ^= nums[i];
+            nums[i] ^= nums[j];
+        }
+
+        return i;
+    }
+}
+```
