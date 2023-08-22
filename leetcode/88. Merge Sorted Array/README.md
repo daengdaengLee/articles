@@ -70,7 +70,7 @@ class Solution {
                 j += 1;
             }
         }
-       
+
         System.arraycopy(result, 0, nums1, 0, m + n);
     }
 }
