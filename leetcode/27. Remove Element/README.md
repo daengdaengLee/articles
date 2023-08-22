@@ -73,3 +73,65 @@ class Solution {
     }
 }
 ```
+
+## Error Case
+
+- `nums = [2]`, `val = 3`
+    - `expected = [2]`
+    - `recieved = []`
+- `nums` 길이가 0, 1, 2 이면 커서 순회가 아예 안 하게 됨
+- 해당 케이스는 커서 순회 전에 미리 처리
+
+### Fix Implementation
+
+```java
+// runtime : java 17
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int l = nums.length;
+        if (l == 0) {
+            return 0;
+        }
+        if (l == 1) {
+            return nums[0] == val ? 0 : 1;
+        }
+        if (l == 2) {
+            if (nums[0] == val && nums[1] == val) {
+                return 0;
+            }
+            if (nums[0] != val && nums[1] != val) {
+                return 2;
+            }
+
+            if (nums[0] == val) {
+                nums[0] ^= nums[1];
+                nums[1] ^= nums[0];
+                nums[0] ^= nums[1];
+            }
+            return 1;
+        }
+
+        int i = 0;
+        int j = nums.length - 1;
+
+        while (i < j) {
+            if (nums[i] != val) {
+                i += 1;
+                continue;
+            }
+
+            if (nums[j] == val) {
+                j -= 1;
+                continue;
+            }
+
+            nums[i] ^= nums[j];
+            nums[j] ^= nums[i];
+            nums[i] ^= nums[j];
+        }
+
+        return i;
+    }
+}
+```
