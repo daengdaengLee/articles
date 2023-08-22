@@ -1,6 +1,7 @@
 # 88. Merge Sorted Array
 
-[문제 링크](https://leetcode.com/problems/merge-sorted-array/)
+- [문제 링크](https://leetcode.com/problems/merge-sorted-array/)
+- [솔루션 링크](https://leetcode.com/problems/merge-sorted-array/solutions/3945752/simple-solution-using-additional-space-than-optimized/)
 
 ## Requirements
 
