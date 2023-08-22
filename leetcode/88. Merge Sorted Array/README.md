@@ -77,3 +77,29 @@ class Solution {
     }
 }
 ```
+
+## Improvement
+
+- [래퍼런스](https://leetcode.com/problems/merge-sorted-array/solutions/3436053/beats-100-best-c-java-python-and-javascript-solution-two-pointer-stl/)
+  ```java
+  class Solution {
+      public void merge(int[] nums1, int m, int[] nums2, int n) {
+          int i = m - 1;
+          int j = n - 1;
+          int k = m + n - 1;
+  
+          while (j >= 0) {
+              if (i >= 0 && nums1[i] > nums2[j]) {
+                  nums1[k--] = nums1[i--];
+              } else {
+                  nums1[k--] = nums2[j--];
+              }
+          }
+      }
+  }
+  ```
+- `result` 배열을 사용하지 않기 때문에 배열 복사 연산도 필요없고, 메모리도 적게 사용함
+- non-decreasing order 로 정렬해야 한다고 해서 꼭 해당 순서대로 순회하는 로직이어야 할 필요는 없음, 유연한 사고 필요
+- 위 래퍼런스의 경우 역순으로 진행하면서 반대로 더 큰 원소를 뽑아서 빈 칸에 채워넣는 방법을 사용
+- 문제에서 `num1` 배열의 뒤에 빈 칸이 있도록 출제했기 때문에 래퍼런스의 방법을 사용하면 자연스럽게 빈 칸부터 채워넣을 수 있음
+- 다음부턴 같은 시간복잡도를 가지더라도 상수 시간과 공간복잡도도 신경쓰도록 하자
