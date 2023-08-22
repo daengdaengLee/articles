@@ -43,6 +43,8 @@ for 0 ~ m+n-1 인 k:
 ## Implementation
 
 ```java
+// runtime : java 17
+
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] result = new int[m + n];
