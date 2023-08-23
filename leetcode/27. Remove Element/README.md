@@ -322,3 +322,105 @@ class Solution {
 - 메모리 사용이 약간 줄어듦
 - 다른 경우와 비교했을 때 68.77% -> 96.12% 로 꽤 상승함
 - 두 가지 가정이 효과가 있다고 판단
+
+## Is it good?
+
+- 예외 케이스를 처리하느라 분기가 많고 코드가 길어짐
+- 같은 아이디어를 구현하면서 분기 없이 단순하게 구현할 수 없을까?
+- 가장 적은 메모리를 사용한 샘플 코드를 참고
+  ```java
+    class Solution {
+        public int removeElement(int[] nums, int val) {
+            int s = 0;
+            int e = nums.length - 1;
+            while (s <= e) {
+                if (nums[e] == val) {
+                    e--;
+                } else {
+                    if (nums[s] == val) {
+                        int temp = nums[e];
+                        nums[e] = nums[s];
+                        nums[s] = temp;
+                        s++;
+                        e--;
+                    } else {
+                        s++;
+                    }
+                }
+            }
+            return e + 1;
+        }
+    }
+  ```
+- 두 커서를 같거나 작다로 비교해서 Error Case 1, Error Case 2 상황이 안 발생하게 처리
+- 이렇게 하면 예외 조건을 분기할 필요 없고 비즈니스 로직만 남길 수 있음, 분기가 없기 때문에 중복 코드도 발생 안 함
+- swap 이후 두 커서를 이동시켜 순회 횟수 줄임
+- 예제 코드에서는 임시 변수를 사용했는데, 저렇게 해도 In-place swap 으로 인정하는 듯, 나는 계속 XOR swap 방식 유지
+
+### Improved Implementation
+
+```java
+// runtime : java 17
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int i = 0;
+        int j = nums.length - 1;
+
+        while (i <= j) {
+            if (nums[i] != val) {
+                i += 1;
+                continue;
+            }
+
+            if (nums[j] == val) {
+                j -= 1;
+                continue;
+            }
+
+            nums[i] ^= nums[j];
+            nums[j] ^= nums[i];
+            nums[i] ^= nums[j];
+            i += 1;
+            j -= 1;
+        }
+
+        return i;
+    }
+}
+```
+
+- 코드가 훨씬 짧아지고 분기가 없어져서 읽기 편해짐
+- swap 이후 커서 이동을 바로 해서 순회 횟수 줄임
+
+#### Accepted
+
+<img width="425" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/879a14d2-4fab-4f60-ad48-3f24f24477c9">
+
+##### Runtime
+
+<img width="1257" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/cd99b3a4-4ee8-4ec0-ad4d-3f41b26ea61a">
+
+##### Memory
+
+<img width="1248" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/ac6bcfdc-f7fb-40dd-9554-d045d56091b9">
+
+- 이상하게 메모리 사용이 다시 올라감
+- 분리한 메소드도 없고 변수 사용도 그대로: 앞선 시도에서 개선한 건 우연일 가능성이 있음
+- 동일한 코드로 재시도
+
+#### Accepted 2
+
+<img width="430" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/cf7eef1d-b18c-4f16-8405-1683a0e2b9c1">
+
+##### Runtime
+
+<img width="1265" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/0aa4967f-2740-4d09-b08b-7fd01657b71d">
+
+##### Memory
+
+<img width="1234" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/4e343e25-97b5-47c8-abc5-a04f1ae8c678">
+
+- 동일한 코드로 실행했을 때 메모리 사용이 다시 줄어듦
+- 이 정도 차이는 실행 시 오차 범위라고 판단
+- 다음부터는 반복 시도한 결과를 종합하여 개선 여부를 판단할 것!
