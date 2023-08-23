@@ -228,3 +228,97 @@ class Solution {
     }
 }
 ```
+
+## Accepted
+
+<img width="428" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/3a6af1b4-08da-4a73-926e-ab10543f3e45">
+
+### Runtime
+
+<img width="1233" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/df0bdbff-ea58-4aac-9945-76e14cb0cedf">
+
+### Memory
+
+<img width="1242" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/3df2bf49-376d-41bd-86ed-4aca0d78bc4c">
+
+- 생각보다 메모리를 많이 사용함
+- 로컬 변수를 많이 사용한 부분을 의심
+- 메소드를 분리해서 클래스 영역 메모리를 많이 사용한 건 아닌지 의심
+
+## Improvement
+
+- 로컬 변수 `l` 삭제하고 `nums.length` 사용
+- 분리한 메소드 다시 inlining
+
+```java
+// runtime : java 17
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0] == val ? 0 : 1;
+        }
+        if (nums.length == 2) {
+            if (nums[0] == val && nums[1] == val) {
+                return 0;
+            }
+            if (nums[0] != val && nums[1] != val) {
+                return 2;
+            }
+
+            if (nums[0] == val) {
+                nums[0] ^= nums[1];
+                nums[1] ^= nums[0];
+                nums[0] ^= nums[1];
+            }
+            return 1;
+        }
+
+        int i = 0;
+        int j = nums.length - 1;
+
+        while (i < j) {
+            if (nums[i] != val) {
+                i += 1;
+                continue;
+            }
+
+            if (nums[j] == val) {
+                j -= 1;
+                continue;
+            }
+
+            nums[i] ^= nums[j];
+            nums[j] ^= nums[i];
+            nums[i] ^= nums[j];
+        }
+
+        if (i == nums.length - 1 && nums[nums.length - 1] != val) {
+            return i + 1;
+        }
+
+        return i;
+    }
+}
+```
+
+### Accepted
+
+<img width="424" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/f951e748-1889-478b-9e52-227886d78fa2">
+
+#### Runtime
+
+<img width="1239" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/6f116a69-bcec-4f70-9781-3c0ad826212c">
+
+- 런타임은 이전 시도 결과를 유지: OK
+
+#### Memory
+
+<img width="1258" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/47f82641-75be-4f13-8886-8e40b162b98f">
+
+- 메모리 사용이 약간 줄어듦
+- 다른 경우와 비교했을 때 68.77% -> 96.12% 로 꽤 상승함
+- 두 가지 가정이 효과가 있다고 판단
