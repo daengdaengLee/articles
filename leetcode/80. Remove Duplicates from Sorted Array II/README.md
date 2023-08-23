@@ -143,3 +143,11 @@ class Solution {
 <img width="426" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/2c0eb51c-5f61-460b-bcf9-6fa9344a2363">
 <img width="1237" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/e7aa610f-83bf-40c9-81ef-95f42f6e330b">
 <img width="1260" alt="image" src="https://github.com/daengdaengLee/articles/assets/30795415/639a6a7c-a132-4c82-9d03-91b492bf031e">
+
+## Is it good?
+
+- 실행 시간은 괜찮은데 메모리를 많이 사용하고 있음
+- 다른 코드를 살펴봐도 알고리즘은 동일함
+- 하지만 루프 종료 이후 `System.gc()` 를 호출하고 있음
+- 하지만 해동 코드를 실행하면 트레이드 오프로 실행 시간이 느려짐
+- 알고리즘 문제 경쟁 때문에 GC를 강제로 돌리는 건 의미가 없다고 판단, 메모리 사용에 대한 개선은 중지
