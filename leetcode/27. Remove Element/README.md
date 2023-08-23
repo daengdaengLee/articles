@@ -1,7 +1,6 @@
 # 27. Remove Element
 
 - [문제 링크](https://leetcode.com/problems/remove-element/)
-- [솔루션 링크](https://leetcode.com/problems/remove-element/solutions/3947848/in-place-swap-using-two-cursors/)
 
 ## Requirements
 
