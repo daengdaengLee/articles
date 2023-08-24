@@ -159,6 +159,9 @@ class Solution {
     public void rotate(int[] nums, int k) {
         var l = nums.length;
         var k2 = k % l;
+        if (k2 == 0) {
+            return;
+        }
         for (var i = 0; i + k2 < l; i += k2) {
             for (var j = 0; j < k2; j += 1) {
                 var leftIndex = i + j;
@@ -175,4 +178,11 @@ class Solution {
 
 ## Report
 
-Time Limit Exceeded
+Wrong Answer
+
+```text
+nums = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]
+k = 38
+outputs  = [17,18,19,20,21,22,23,24,25,26,27,1,2,3,4,5,6,7,8,9,10,11,13,14,15,16,12]
+expected = [17,18,19,20,21,22,23,24,25,26,27,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+```
