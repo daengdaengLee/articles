@@ -25,19 +25,18 @@ Example 2
 ```text
 // Pseudocode
 
-카운터 = map{num -> 출현 횟수} 
-for num in nums:
-  if num in 카운터:
-    현재 출현 횟수 = 카운터[num]
-    카운터[num] = 현재 출현 횟수 + 1
-  else:
-    카운터[num] = 1
-    
 n = 길이(nums)
 기준 출현 횟수 = |n / 2|
-for (num, 출현 횟수) in 카운터:
-  if 출현 횟수 > 기준 출현 횟수:
-    return num // 문제 조건상 무조건 존재
+카운터 = map{num -> 출현 횟수} 
+for num in nums:
+  현재 출현 횟수 = 1
+  if num in 카운터:
+    현재 출현 횟수 = 카운터[num] + 1
+    
+  if 현재 출현 횟수 > 기준 출현 횟수:
+    return num
+    
+  카운터[num] = 현재 출현 횟수
 ```
 
 - 가장 단순하고 직관적
