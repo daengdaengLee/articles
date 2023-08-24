@@ -62,49 +62,7 @@ Memory 55.4 MB, Beats 79.77%
 더 단순한 방법:
 
 - 오른쪽으로 1칸 회전하는 함수를 만들고
-- `k` 번 실행
-
-```text
-// Pseudocode
-
-fn 오른쪽으로1칸(nums):
-  l = 길이(nums)
-  마지막원소 = nums[l - 1]
-  nums[0:l-1] 을 nums[1:l] 에 복사
-  nums[0] = 마지막원소
-  
-for k번:
-  오른쪽으로1칸(nums)
-```
-
-## Implementation
-
-```java
-class Solution {
-    public void rotate(int[] nums, int k) {
-        for (var i = 0; i < k; i += 1) {
-            step(nums);
-        }
-    }
-
-    private void step(int[] nums) {
-        var l = nums.length;
-        var last = nums[l - 1];
-        System.arraycopy(nums, 0, nums, 1, l - 1);
-        nums[0] = last;
-    }
-}
-```
-
-## Report
-
-Time Limit Exceeded
-
-- 테스트 실행일 땐 통과하지만 submit 하면 시간 초과
-
-## Idea
-
-시간 초과한 버전에서 `k` 대신 `k2` 로 보정하는 로직만 추가
+- `k2` 번 실행
 
 ```text
 // Pseudocode
@@ -146,7 +104,7 @@ class Solution {
 
 Time Limit Exceeded
 
-- 마찬가지로 테스트 실행일 땐 통과하지만 submit 하면 시간 초과
+- 테스트 실행일 땐 통과하지만 submit 하면 시간 초과
 
 ## Idea
 
