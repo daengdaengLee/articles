@@ -264,3 +264,35 @@ Accepted
 Runtime 274 ms, Beats 5.46%
 
 Memory 61 MB, Beats 66.32%
+
+## Study
+
+2중 루프를 제거하는 방법은?
+
+다른 풀이 참고:
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price;
+            }
+            var profit = price - minPrice;
+            if (maxProfit < profit) {
+                maxProfit = profit;
+            }
+        }
+        return maxProfit;
+    }
+}
+```
+
+풀이 설명:
+
+- 왼쪽 -> 오른쪽 순회하면서 항상 처음~현재 범위에서 최소값을 추적
+- 오늘 판매한다면 과거 최소값이었을 때 샀을 때 최대 수익
+- 오늘 팔았을 때 최대 수익이 기존 최대 수익보다 크면 업데이트
