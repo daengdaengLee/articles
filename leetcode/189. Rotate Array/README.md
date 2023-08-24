@@ -231,3 +231,42 @@ i = 22; 22 + 11 > 27 -> 종료
 ```
 
 - swap 영역이 겹치는 경우를 고려해야 함
+
+## Study
+
+다른 사람의 솔루션 참고: 추가적인 동적 크기 메모리 사용 없이 배열 돌리는 방법
+
+```java
+public class Solution {
+    public void rotate(int[] nums, int k) {
+        if (nums.length <= 1) {
+            return;
+        }
+        //step each time to move
+        int step = k % nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, step - 1);
+        reverse(nums, step, nums.length - 1);
+    }
+
+    //reverse int array from n to m
+    public void reverse(int[] nums, int n, int m) {
+        while (n < m) {
+            nums[n] ^= nums[m];
+            nums[m] ^= nums[n];
+            nums[n] ^= nums[m];
+            n++;
+            m--;
+        }
+    }
+}
+```
+
+설명:
+
+- 기존 `k2` 가 위 코드에서는 `step`
+- 먼저 전체 배열을 뒤집고 `step` 만큼 나눠보면 나눈 부분 안에서는 뒤집어져 있지만 두 부분끼리는 원하는 순서대로 정렬
+- 원래 뒤쪽 `step` 개만큼 앞쪽으로 이동한 상태
+- 다만 앞쪽 부분, 뒤쪽 부분이 각각 뒤집어져 있을 뿐
+- 각각 부분별로 따로 뒤집으면 완료
+- 간단한데 매우 효과적이라서 놀랍다!
