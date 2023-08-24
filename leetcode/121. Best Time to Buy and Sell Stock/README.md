@@ -1,4 +1,4 @@
-ㅑ# 121. Best Time to Buy and Sell Stock
+# 121. Best Time to Buy and Sell Stock
 
 - [문제 링크](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
@@ -52,4 +52,4 @@ class Solution {
 
 Time Limit Exceeded
 
-- 길이 `67552` 인 `prices` 가 입력된 경우 
+- 길이 `67552` 인 `prices` 가 입력된 경우
