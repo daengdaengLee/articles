@@ -71,7 +71,8 @@ Accepted
 Runtime 12ms, Beats 32.29%
 
 - 89.08% of solutions used 8 ms of runtime
-- 선형 시간 복잡도를 가졌는데 왜 상대적으로 느릴까?
+- 선형 시간 복잡도를 가졌는데 상대적으로 안 좋은 결과가 나옴
+- 메모리 공간을 많이 사용하더라도 더 빠른 알고리즘을 제출한 사람이 많은 것으로 예상
 
 Memory 46.6 MB, Beats 91.73%
 
