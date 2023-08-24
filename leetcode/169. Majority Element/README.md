@@ -41,3 +41,36 @@ for num in nums:
 
 - 가장 단순하고 직관적
 - 이 방법은 선형 시간 복잡도 조건은 만족하지만 카운터 맵이 가변 공간을 사용하기 때문에 공간 복잡도 조건은 만족하지 못함
+
+## Implementation
+
+```java
+import java.util.HashMap;
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        var n = nums.length;
+        var half = n / 2;
+        var counter = new HashMap<Integer, Integer>();
+        for (var num : nums) {
+            var current = counter.getOrDefault(num, 0) + 1;
+            if (current > half) {
+                return num;
+            }
+            counter.put(num, current);
+        }
+        return 0;
+    }
+}
+```
+
+## Report
+
+```text
+Accepted
+
+Runtime 12ms, Beats 32.29%
+  89.08% of solutions used 8 ms of runtime
+  
+Memory 46.6 MB, Beats 91.73%
+```
