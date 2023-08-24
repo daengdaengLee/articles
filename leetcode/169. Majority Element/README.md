@@ -66,11 +66,14 @@ class Solution {
 
 ## Report
 
-```text
 Accepted
 
 Runtime 12ms, Beats 32.29%
-  89.08% of solutions used 8 ms of runtime
-  
+
+- 89.08% of solutions used 8 ms of runtime
+- 선형 시간 복잡도를 가졌는데 왜 상대적으로 느릴까?
+
 Memory 46.6 MB, Beats 91.73%
-```
+
+- 공간 복잡도 조건은 못 만족시켰는데 상대적으로 좋은 결과가 나옴
+- 고정 메모리 공간만 사용해서 제출한 사람이 적은 것으로 예상
