@@ -150,3 +150,62 @@ Memory 46.6 MB, Beats 91.73%
 
 - 공간 복잡도 조건은 못 만족시켰는데 상대적으로 좋은 결과가 나옴
 - 고정 메모리 공간만 사용해서 제출한 사람이 적은 것으로 예상
+
+## Idea
+
+- 위에서 살펴본 샘플 코드는 재귀를 통해서 검사하고 있는 `num` 값을 추적했지만 로컬 변수로 추적해도 충분하지 않을까?
+- 알고리즘을 유지한 상태로 재귀 없이 리팩토링하면 선형 시간 복잡도와 `O(1)` 공간 복잡도 조건을 모두 만족할 수 있음
+
+```text
+// Pseudocode
+
+카운터 = 0
+후보 = nums 의 첫 번째 원소 // nums 길이는 1 이상이기 때문에 무조건 값이 있음
+for num in nums:
+  if 후보 == num:
+    카운터 1 증가
+  else:
+    카운터 1 감소
+    
+  if 카운터 == -1:
+    카운터 = 0
+    후보 = num
+return 후보
+```
+
+## Implementation
+
+```java
+class Solution {
+    public int majorityElement(int[] nums) {
+        var counter = 0;
+        var candidate = nums[0];
+        for (var num : nums) {
+            if (candidate == num) {
+                counter += 1;
+            } else {
+                counter -= 1;
+            }
+
+            if (counter == -1) {
+                counter = 0;
+                candidate = num;
+            }
+        }
+        return candidate;
+    }
+}
+```
+
+## Report
+
+Accepted
+
+Runtime 1ms, Beats 99.84%
+
+- 추가적인 힙 메모리 사용이 없어져서 속도 개선된 걸로 예상
+
+Memory 48.5 MB, Beats 44.64%
+
+- 공간 복잡도 조건은 만족시켰는데 상대적으로 안 좋은 결과가 나옴
+- 메모리 사용량 측정에 제어할 수 없는 요소가 있는 걸로 예상
