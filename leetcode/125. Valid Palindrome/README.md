@@ -153,4 +153,19 @@ return isPalindrome?
 - 배열2에 쓰였던 메모리 공간을 절약한다.
 - 배열2를 만들때 `n` 번 순회했던 시간을 절약한다.
 - 두 배열을 비교할 때 `n` 번 순회했던 시간을 `n / 2` 번 순회하는 시간으로 절약한다.
- 
+
+alphanumeric 판단하기:
+
+- 문자끼리 크기 비교를 통해 판단한다.
+- `a` 이상 `z` 이하, `A` 이상 `Z` 이하, `0` 이상 `9` 이하인 경우 중 하나인 경우만 통과시킨다.
+
+```text
+isAlphanumeric?(문자):
+  if 문자 >= 'a' 그리고 문자 <= 'z':
+    return true
+  if 문자 >= 'A' 그리고 문자 <= 'Z':
+    return true
+  if 문자 >= '0' 그리고 문자 <= '9':
+    return true
+  return false
+```
