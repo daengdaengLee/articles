@@ -185,3 +185,53 @@ isAlphanumeric?(문자):
     return true
   return false
 ```
+
+## Implementation
+
+```java
+class Solution {
+    public boolean isPalindrome(String s) {
+        var chars = s
+                .codePoints()
+                .filter(this::isAlphanumeric)
+                .map(Character::toLowerCase)
+                .toArray();
+        var l = chars.length;
+
+        if (l <= 1) {
+            return true;
+        }
+
+        var pointer1 = 0;
+        var pointer2 = l - 1;
+        while (pointer1 < pointer2) {
+            var char1 = chars[pointer1];
+            var char2 = chars[pointer2];
+            if (char1 != char2) {
+                return false;
+            }
+            pointer1 += 1;
+            pointer2 -= 1;
+        }
+        return true;
+    }
+
+    private boolean isAlphanumeric(int codePoint) {
+        if (codePoint >= 'a' && codePoint <= 'z') {
+            return true;
+        }
+        if (codePoint >= 'A' && codePoint <= 'Z') {
+            return true;
+        }
+        if (codePoint >= '0' && codePoint <= '9') {
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+결과: Accepted
+
+- Runtime 11 ms, Beats 47.69%
+- Memory 43.8 MB, Beats 48.87%
