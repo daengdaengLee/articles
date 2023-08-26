@@ -146,6 +146,8 @@ while 포인터1 < 포인터2:
   if 문자1 != 문자2:
     isPalindrome? = false
     break
+  포인터1 += 1
+  포인터2 -= 1
     
 return isPalindrome?
 ```
