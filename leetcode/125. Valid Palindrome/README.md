@@ -235,3 +235,108 @@ class Solution {
 
 - Runtime 11 ms, Beats 47.69%
 - Memory 43.8 MB, Beats 48.87%
+
+## Study
+
+기존 방법에서는 문자열을 문제 조건에 맞게 처리하여 code point 배열로 만들어두고 palindrome 인지 검사를 진행했다.
+배열을 만들지 않고 문자열을 two pointer 방식으로 순회하면서 각 문자에 대해 문제 조건에 맞게 처리하는 로직을 반복문 안에서 실행하면
+공간 복잡도를 `O(1)` 로 개선할 수 있고 시간 복잡도는 그대로지만 실제 순회 횟수를 줄일 수 있지 않을까?
+
+```text
+l = 길이(s)
+
+if l <= 1:
+  return true
+  
+포인터1 = 0
+포인터2 = l - 1
+while 포인터1 < 포인터2:
+  문자1 = s[포인터1]
+  if !isAlphanumeric?(문자1):
+    포인터1 += 1
+    continue
+  
+  문자2 = s[포인터2]
+  if !isAlphanumeric?(문자2):
+    포인터2 -= 1
+    continue
+    
+  문자1 = toLowerCase(문자1)
+  문자2 = toLowerCase(문자2)
+  
+  if 문자1 != 문자2:
+    return false
+  포인터1 += 1
+  포인터2 -= 1
+return true
+```
+
+시간 복잡도:
+
+- 최대 `n / 2` 번 순회한다.
+- 시간 복잡도는 `O(n / 2) = O(n)` 이다.
+- 하지만 실제 순회 횟수는 `2 / 5` 만큼 줄어든다.
+
+공간 복잡도:
+
+- 크기가 동적으로 변하는 메모리 공간을 사용하지 않는다.
+- 공간 복잡도는 `O(1)` 이다.
+
+Implementation:
+
+```java
+class Solution {
+    public boolean isPalindrome(String s) {
+        var l = s.length();
+
+        if (l <= 1) {
+            return true;
+        }
+
+        var pointer1 = 0;
+        var pointer2 = l - 1;
+
+        while (pointer1 < pointer2) {
+            var char1 = s.codePointAt(pointer1);
+            if (!this.isAlphanumeric(char1)) {
+                pointer1 += 1;
+                continue;
+            }
+
+            var char2 = s.codePointAt(pointer2);
+            if (!this.isAlphanumeric(char2)) {
+                pointer2 -= 1;
+                continue;
+            }
+
+            char1 = Character.toLowerCase(char1);
+            char2 = Character.toLowerCase(char2);
+
+            if (char1 != char2) {
+                return false;
+            }
+            pointer1 += 1;
+            pointer2 -= 1;
+        }
+        return true;
+    }
+
+    private boolean isAlphanumeric(int codePoint) {
+        if (codePoint >= 'a' && codePoint <= 'z') {
+            return true;
+        }
+        if (codePoint >= 'A' && codePoint <= 'Z') {
+            return true;
+        }
+        if (codePoint >= '0' && codePoint <= '9') {
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+결과: Accepted
+
+- Runtime 2 ms, Beats 99.64%
+- Memory 41.6 MB, Beats 94.82%
