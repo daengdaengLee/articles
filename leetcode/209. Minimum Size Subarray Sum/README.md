@@ -115,4 +115,39 @@ fn 해법(target, nums):
 
 - 최악의 경우 시작 인덱스와 끝 인덱스가 각각 처음부터 배열 끝까지 순회하는 경우이다.
 - 따라서 시간 복잡도는 `O(n + n) = O(n)` 이다.
+
+## 구현
+
+```java
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        var totalL = nums.length;
+        var subL = 0;
+        var startIdx = 0;
+        var endIdx = 0;
+        var subSum = nums[0];
+        while (startIdx <= endIdx && endIdx < totalL) {
+            if (subSum < target) {
+                endIdx += 1;
+                subSum += endIdx < totalL ? nums[endIdx] : 0;
+                continue;
+            }
+
+            var currentSubL = endIdx - startIdx + 1;
+            if (subL == 0 || currentSubL < subL) {
+                subL = currentSubL;
+            }
+
+            subSum -= nums[startIdx];
+            startIdx += 1;
+        }
+        return subL;
+    }
+}
+```
+
+실행 결과: Accepted
+
+- Runtime 1 ms, Beats 99.96%
+- Memory 53.4 MB, Beats 98.53%
  
