@@ -150,4 +150,51 @@ class Solution {
 
 - Runtime 1 ms, Beats 99.96%
 - Memory 53.4 MB, Beats 98.53%
- 
+
+## 다른 해법
+
+시간 복잡도 `O(n log(n))` 인 다른 해법을 찾아 보았다.
+
+```java
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        var low = 1;
+        var hight = nums.length;
+        var result = 0;
+        while (low <= hight) {
+            var mid = low + (hight - low) / 2;
+            if (this.isPossible(nums, target, mid)) {
+                hight = mid - 1;
+                result = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return result;
+    }
+
+    private boolean isPossible(int[] nums, int target, int size) {
+        var sum = 0;
+        var i = 0;
+        var j = 0;
+        while (i < size) {
+            sum += nums[i];
+            if (sum >= target) {
+                return true;
+            }
+            i += 1;
+        }
+        while (i < nums.length) {
+            sum = sum + nums[i] - nums[j];
+            i += 1;
+            j += 1;
+            if (sum >= target) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+이진 탐색을 진행하면서 입력받은 정수 배열을 순회하기 때문에 시간 복잡도는 `O(n log(n))` 이다.
