@@ -1,5 +1,7 @@
 # articles
 
+[KO](https://github.com/daengdaengLee/articles/blob/main/README.md) | [EN](https://github.com/daengdaengLee/articles/blob/main/README_EN.md)
+
 개인 아티클 저장소입니다.
 
 동시에 배포중인 플랫폼:

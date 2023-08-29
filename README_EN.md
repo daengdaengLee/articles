@@ -1,5 +1,7 @@
 # articles
 
+[KO](https://github.com/daengdaengLee/articles/blob/main/README.md) | [EN](https://github.com/daengdaengLee/articles/blob/main/README_EN.md)
+
 This is a personal article repository.
 
 deploying platform:
