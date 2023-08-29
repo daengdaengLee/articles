@@ -6,7 +6,7 @@
 
 동시에 배포중인 플랫폼:
 
-- [Medium](https://medium.com/@daengdaenglee)
+- [Medium](https://medium.com/@daengdaenglee/lists)
 
 ## 큐레이션
 

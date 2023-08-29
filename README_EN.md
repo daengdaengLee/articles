@@ -6,7 +6,7 @@ This is a personal article repository.
 
 deploying platform:
 
-- [Medium](https://medium.com/@daengdaenglee)
+- [Medium](https://medium.com/@daengdaenglee/lists)
 
 ## Curation
 
