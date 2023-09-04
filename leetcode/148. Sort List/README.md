@@ -296,3 +296,66 @@ class Solution {
 
 - Runtime 14 ms, Beats 27.80%
 - Memory 55.8 MB, Beats 51.89%
+
+## 다른 방법
+
+공간 복잡도 `O(1)` 에 대한 추가 요구사항을 무시하면, 재귀를 이용하여 좀 더 이해하기 쉬운 코드를 작성할 수 있다.
+
+```java
+public class Solution {
+
+    // 두 정렬된 리스트를 병합하고, 머리 노드를 반환한다. 
+    public ListNode merge(ListNode h1, ListNode h2) {
+        if (h1 == null) {
+            return h2;
+        }
+        if (h2 == null) {
+            return h1;
+        }
+
+        if (h1.val < h2.val) {
+            h1.next = merge(h1.next, h2);
+            return h1;
+        } else {
+            h2.next = merge(h1, h2.next);
+            return h2;
+        }
+    }
+
+    public ListNode sortList(ListNode head) {
+        // 예외 케이스
+        if (head == null) {
+            return head;
+        }
+        if (head.next == null) {
+            return head;
+        }
+
+        // p1 은 매번 1칸 이동한다.
+        // p2 는 매번 2칸 이동한다.
+        // pre 는 p1의 이전 노드를 기록한다.
+        var p1 = head;
+        var p2 = head;
+        var pre = head;
+
+        while (p2 != null && p2.next != null) {
+            pre = p1;
+            p1 = p1.next;
+            p2 = p2.next.next;
+        }
+        // pre.next 를 null 로 만들어서 head~pre, p1~p2 두 개의 부분 리스트를 만든다.
+        pre.next = null;
+
+        // 두 개의 부분 리스트를 각각 정렬해서 각 머리 노드를 구한다.
+        var h1 = sortList(head);
+        var h2 = sortList(p1);
+
+        return merge(h1, h2);
+    }
+}
+```
+
+실행 결과: Accepted
+
+- Runtime 13 ms, Beats 34.37%
+- Memory 57.3 MB, Beats 5.20%
