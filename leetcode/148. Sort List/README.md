@@ -164,3 +164,135 @@ fn 최대N개_이후_노드_구하기(노드, n):
 - 링크드 리스트의 순서 변경은 next 참조 변경으로 가능하다.
 - 정렬된 리스트를 담을 별도의 컬렉션 메모리 공간이 필요 없다.
 - 공간 복잡도는 `O(1)` 이다.
+
+## 구현
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode sortList(ListNode head) {
+        var len = this.getLength(head);
+        if (len <= 1) {
+            return head;
+        }
+
+        var localLen = 1;
+        while (localLen < len) {
+            var headTail = this.sortLocal(head, localLen);
+            head = headTail.head;
+            var tail = headTail.tail;
+            while (tail.next != null) {
+                headTail = this.sortLocal(tail.next, localLen);
+                tail.next = headTail.head;
+                tail = headTail.tail;
+            }
+            localLen *= 2;
+        }
+
+        return head;
+    }
+
+    private int getLength(ListNode head) {
+        var len = 0;
+        while (head != null) {
+            len += 1;
+            head = head.next;
+        }
+        return len;
+    }
+
+    private ListNode offsetAtMostN(ListNode node, int offset) {
+        var lastNode = node;
+        for (var i = 0; i < offset; i += 1) {
+            if (node == null) {
+                return lastNode;
+            }
+            lastNode = node;
+            node = node.next;
+        }
+        return node == null ? lastNode : node;
+    }
+
+    private HeadTail sortLocal(ListNode node, int localLen) {
+        ListNode head = null;
+        ListNode current = null;
+
+        int aCount = localLen;
+        int bCount = localLen;
+
+        var midNode = this.offsetAtMostN(node, localLen - 1);
+        if (midNode.next == null) {
+            return new HeadTail(node, midNode);
+        }
+
+        var aNode = node;
+        var bNode = midNode.next;
+
+        while (aCount > 0 || bCount > 0) {
+            if (aCount == 0) {
+                for (var i = 0; i < bCount; i += 1) {
+                    if (bNode == null) {
+                        break;
+                    }
+                    current.next = bNode;
+                    current = bNode;
+                    bNode = bNode.next;
+                }
+                break;
+            }
+
+            if (bCount == 0 || bNode == null) {
+                for (var i = 0; i < aCount; i += 1) {
+                    current.next = aNode;
+                    current = aNode;
+                    aNode = aNode.next;
+                }
+                break;
+            }
+
+            if (aNode.val <= bNode.val) {
+                if (current == null) {
+                    head = aNode;
+                    current = aNode;
+                } else {
+                    current.next = aNode;
+                    current = aNode;
+                }
+                aNode = aNode.next;
+                aCount -= 1;
+            } else {
+                if (current == null) {
+                    head = bNode;
+                    current = bNode;
+                } else {
+                    current.next = bNode;
+                    current = bNode;
+                }
+                bNode = bNode.next;
+                bCount -= 1;
+            }
+        }
+
+        current.next = bNode;
+
+        return new HeadTail(head, current);
+    }
+
+    private record HeadTail(ListNode head, ListNode tail) {
+    }
+}
+```
+
+실행 결과: Accepted
+
+- Runtime 14 ms, Beats 27.80%
+- Memory 55.8 MB, Beats 51.89%
