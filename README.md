@@ -33,6 +33,8 @@
     - [Medium](https://medium.com/@daengdaenglee/122-best-time-to-buy-and-sell-stock-ii-79660f7baad8)
 - [125. Valid Palindrome](https://github.com/daengdaengLee/articles/blob/main/leetcode/125.%20Valid%20Palindrome/README.md)
     - [Medium](https://medium.com/@daengdaenglee/125-valid-palindrome-42307c4c76c0)
+- [148. Sort List](https://github.com/daengdaengLee/articles/blob/main/leetcode/148.%20Sort%20List/README.md)
+    - [Medium](https://medium.com/@daengdaenglee/leetcode-148-sort-list-dfc802921c23)
 - [155. Min Stack](https://github.com/daengdaengLee/articles/blob/main/leetcode/155.%20Min%20Stack/README.md)
     - [Medium](https://medium.com/@daengdaenglee/leetcode-155-min-stack-ffce4e7ba61)
 - [169. Majority Element](https://github.com/daengdaengLee/articles/blob/main/leetcode/169.%20Majority%20Element/README.md)
