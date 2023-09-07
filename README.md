@@ -43,3 +43,5 @@
   | [Medium](https://medium.com/@daengdaenglee/189-rotate-array-ce9ebc9b00f4)
 - [209. Minimum Size Subarray Sum](./leetcode/209.%20Minimum%20Size%20Subarray%20Sum/README.md)
   | [Medium](https://medium.com/@daengdaenglee/leetcode-209-minimum-size-subarray-sum-1069371b386b)
+- [530. Minimum Absolute Difference in BST](./leetcode/530.%20Minimum%20Absolute%20Difference%20in%20BST/README.md)
+  | [Medium](https://medium.com/@daengdaenglee/leetcode-530-minimum-absolute-difference-in-bst-9c0173997565)
