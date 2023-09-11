@@ -122,6 +122,7 @@ class 노드:
 
 - 모든 구성 문자가 새로 추가되는 경우 trie 자료구조는 문자열 길이만큼의 새 공간이 필요하다. 이 경우 공간 복잡도는 `O(n)` 이다.
 - 하지만 더 많은 문자열을 추가할수록 중복되는 문자는 많아지고 추가 공간은 더 적게 필요해진다.
+- 조회 과정에서는 고정된 크기의 메모리만 사용하므로 공간 복잡도는 `O(1)` 이다.
 
 ## 구현
 
@@ -209,4 +210,106 @@ class Trie {
 
 - Runtime 44 ms, Beats 27.70%
 - Memory 54.7 MB, Beats 55.39%
+
+## 다른 방법
+
+- 반복문 대신 재귀를 사용하여 구현할 수 있다.
+- 반복 횟수는 동일하므로 시간 복잡도는 동일하다.
+- 조회의 경우 기존에는 `O(1)` 의 공간 복잡도를 가지지만, 재귀는 호출 스택을 문자열 길이만큼 쌓기 때문에 `O(n)` 의 공간 복잡도를 가진다.
+- 삽입의 경우 공간 복잡도의 Big-O 노테이션은 동일하지만,
+  재귀 호출 스택에 사용되는 공간이 문자열 길이만큼 필요하기 때문에 실제로는 메모리 공간을 2배 더 사용한다.
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+class Trie {
+    private final Node root;
+
+    public Trie() {
+        this.root = new Node();
+    }
+
+    public void insert(String word) {
+        this.root.insert(word, 0);
+    }
+
+    public boolean search(String word) {
+        return this.root.search(word, 0);
+    }
+
+    public boolean startsWith(String prefix) {
+        return this.root.startsWith(prefix, 0);
+    }
+
+    private static class Node {
+        public final char value;
+        public boolean isEnd;
+        public final Map<Character, Node> children = new HashMap<>();
+
+        public Node(char value) {
+            this.value = value;
+        }
+
+        public Node() {
+            this(' ');
+        }
+
+        public void insert(String word, int idx) {
+            if (idx >= word.length()) {
+                return;
+            }
+
+            var c = word.charAt(idx);
+            var node = this.children.get(c);
+            if (node == null) {
+                var newNode = new Node(c);
+                this.children.put(newNode.value, newNode);
+                node = newNode;
+            }
+            if (word.length() == idx + 1) {
+                node.isEnd = true;
+            }
+            node.insert(word, idx + 1);
+        }
+
+        public boolean search(String word, int idx) {
+            if (idx >= word.length()) {
+                return false;
+            }
+
+            var c = word.charAt(idx);
+            var node = this.children.get(c);
+            if (node == null) {
+                return false;
+            }
+            if (word.length() == idx + 1 && node.isEnd) {
+                return true;
+            }
+            return node.search(word, idx + 1);
+        }
+
+        public boolean startsWith(String prefix, int idx) {
+            if (idx >= prefix.length()) {
+                return false;
+            }
+
+            var c = prefix.charAt(idx);
+            var node = this.children.get(c);
+            if (node == null) {
+                return false;
+            }
+            if (prefix.length() == idx + 1) {
+                return true;
+            }
+            return node.startsWith(prefix, idx + 1);
+        }
+    }
+}
+```
+
+실행 결과: Accepted
+
+- Runtime 46 ms, Beats 22.7%
+- Memory 55.8 MB, Beats 5.94%
  
