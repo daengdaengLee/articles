@@ -122,3 +122,91 @@ class 노드:
 
 - 모든 구성 문자가 새로 추가되는 경우 trie 자료구조는 문자열 길이만큼의 새 공간이 필요하다. 이 경우 공간 복잡도는 `O(n)` 이다.
 - 하지만 더 많은 문자열을 추가할수록 중복되는 문자는 많아지고 추가 공간은 더 적게 필요해진다.
+
+## 구현
+
+```java
+package trie;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+class Trie {
+    private final Node root;
+
+    public Trie() {
+        this.root = new Node();
+    }
+
+    public void insert(String word) {
+        var chars = word.toCharArray();
+        var node = this.root;
+        for (var c : chars) {
+            var matched = node.getChild(c);
+            if (matched.isEmpty()) {
+                var newNode = new Node(c);
+                node.addChild(newNode);
+                node = newNode;
+            } else {
+                node = matched.get();
+            }
+        }
+        node.isEnd = true;
+    }
+
+    public boolean search(String word) {
+        var matched = this.findNode(word);
+        return matched.map(n -> n.isEnd).orElse(false);
+    }
+
+    public boolean startsWith(String prefix) {
+        var matched = this.findNode(prefix);
+        return matched.isPresent();
+    }
+
+    private Optional<Node> findNode(String value) {
+        var chars = value.toCharArray();
+        var node = this.root;
+        for (var c : chars) {
+            var matched = node.getChild(c);
+            if (matched.isEmpty()) {
+                return matched;
+            }
+            node = matched.get();
+        }
+        return Optional.of(node);
+    }
+
+    private static class Node {
+        public final char value;
+        public boolean isEnd;
+        public final Map<Character, Node> children = new HashMap<>();
+
+        public Node(char value) {
+            this.value = value;
+        }
+
+        public Node() {
+            this(' ');
+        }
+
+        public void addChild(Node child) {
+            if (this.children.containsKey(child.value)) {
+                throw new IllegalArgumentException("the character is already registerd.");
+            }
+            this.children.put(child.value, child);
+        }
+
+        public Optional<Node> getChild(char value) {
+            return Optional.ofNullable(this.children.get(value));
+        }
+    }
+}
+```
+
+실행 결과: Accepted
+
+- Runtime 44 ms, Beats 27.70%
+- Memory 54.7 MB, Beats 55.39%
+ 
