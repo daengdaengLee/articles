@@ -26,3 +26,27 @@ Trie 란?:
 - `1 <= word.length, prefix.length <= 2000`
 - `word` 와 `prefix` 는 알파벳 소문자로만 이루어져 있다.
 - `insert`, `search`, `startsWith` 연산은 전체 합쳐서 최대 `3 * (10 ^ 4)` 번 호출된다.
+
+## 예시
+
+Example 1:
+
+- 입력:
+  ```text
+  ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+  [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]] 
+  ```
+- 출력:
+  ```text
+  [null, null, true, false, true, null, true]
+  ```
+- 설명:
+  ```text
+  Trie trie = new Trie();
+  trie.insert("apple");
+  trie.search("apple");   // return True
+  trie.search("app");     // return False
+  trie.startsWith("app"); // return True
+  trie.insert("app");
+  trie.search("app");     // return True
+  ```
