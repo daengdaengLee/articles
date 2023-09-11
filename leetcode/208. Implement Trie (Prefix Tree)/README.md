@@ -179,7 +179,7 @@ class Trie {
         return Optional.of(node);
     }
 
-    private static class Node {
+    private static final class Node {
         public final char value;
         public boolean isEnd;
         public final Map<Character, Node> children = new HashMap<>();
@@ -220,6 +220,8 @@ class Trie {
   재귀 호출 스택에 사용되는 공간이 문자열 길이만큼 필요하기 때문에 실제로는 메모리 공간을 2배 더 사용한다.
 
 ```java
+package trie;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -242,7 +244,7 @@ class Trie {
         return this.root.startsWith(prefix, 0);
     }
 
-    private static class Node {
+    private static final class Node {
         public final char value;
         public boolean isEnd;
         public final Map<Character, Node> children = new HashMap<>();
@@ -312,4 +314,90 @@ class Trie {
 
 - Runtime 46 ms, Beats 22.7%
 - Memory 55.8 MB, Beats 5.94%
- 
+
+- 입력값은 모두 알파벳 소문자만 사용한다는 제약 조건을 활용한다.
+- 각 노드가 미리 최대한의 자식 노드를 담을 수 있는 공간을 확보한다.
+- 그러면 `Node` 의 내부 자료구조를 더 단순화시킬 수 있다.
+
+```java
+package trie;
+
+class Trie {
+    private final Node root;
+
+    public Trie() {
+        this.root = new Node();
+    }
+
+    public void insert(String word) {
+        this.root.insert(word, 0);
+    }
+
+    public boolean search(String word) {
+        return this.root.search(word, 0);
+    }
+
+    public boolean startsWith(String prefix) {
+        return this.root.startsWith(prefix, 0);
+    }
+
+    private static final class Node {
+        private final Node[] nodes;
+        private boolean isEnd;
+
+        public Node() {
+            this.nodes = new Node[26];
+        }
+
+        public void insert(String word, int idx) {
+            if (idx >= word.length()) {
+                return;
+            }
+
+            var i = word.charAt(idx) - 'a';
+            if (this.nodes[i] == null) {
+                this.nodes[i] = new Node();
+            }
+            if (word.length() == idx + 1) {
+                this.nodes[i].isEnd = true;
+            }
+            this.nodes[i].insert(word, idx + 1);
+        }
+
+        public boolean search(String word, int idx) {
+            if (idx >= word.length()) {
+                return false;
+            }
+
+            var node = this.nodes[word.charAt(idx) - 'a'];
+            if (node == null) {
+                return false;
+            }
+            if (word.length() == idx + 1 && node.isEnd) {
+                return true;
+            }
+            return node.search(word, idx + 1);
+        }
+
+        public boolean startsWith(String prefix, int idx) {
+            if (idx >= prefix.length()) {
+                return false;
+            }
+
+            var node = this.nodes[prefix.charAt(idx) - 'a'];
+            if (node == null) {
+                return false;
+            }
+            if (prefix.length() == idx + 1) {
+                return true;
+            }
+            return node.startsWith(prefix, idx + 1);
+        }
+    }
+}
+```
+
+실행 결과: Accepted
+
+- Runtime 31 ms, Beats 98.13%
+- Memory 54.8 MB, Beats 55.39%
