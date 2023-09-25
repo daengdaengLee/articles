@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-아래 시퀸스대로 private 키를 요구하지 않고 이더리움 지갑 주인을 인증할 수 있습니다.
+아래 시퀸스대로 서버에서 private 키를 요구하지 않고 이더리움 지갑 주인을 인증할 수 있습니다.
 
 ```mermaid
 sequenceDiagram
