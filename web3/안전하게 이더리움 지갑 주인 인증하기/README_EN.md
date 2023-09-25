@@ -59,4 +59,4 @@ Signing and Verification:
 ## Other Usage
 
 - When using asymmetric cryptography with public and private keys,
-  the same approach can be used to authenticate the owner of asymmetric keys.
+  the same approach can be used to authenticate the owner of the asymmetric cryptography key.
