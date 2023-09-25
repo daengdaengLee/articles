@@ -17,6 +17,11 @@
 - [순서를 유지하는 비동기 동시 처리](./nodejs/%EC%88%9C%EC%84%9C%EB%A5%BC%20%EC%9C%A0%EC%A7%80%ED%95%98%EB%8A%94%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EB%8F%99%EC%8B%9C%20%EC%B2%98%EB%A6%AC/README.md)
   | [Medium](https://medium.com/@daengdaenglee/%EC%88%9C%EC%84%9C%EB%A5%BC-%EC%9C%A0%EC%A7%80%ED%95%98%EB%8A%94-%EB%B9%84%EB%8F%99%EA%B8%B0-%EB%8F%99%EC%8B%9C-%EC%B2%98%EB%A6%AC-b05092398e45)
 
+### Java
+
+- [자바 Custom Composed Annotation 처리](./java/자바%20Custom%20Composed%20Annotation%20처리/README.md)
+  | [Medium](https://medium.com/@daengdaenglee/%EC%9E%90%EB%B0%94-custom-composed-annotation-%EC%B2%98%EB%A6%AC-97cc83b8550d)
+
 # LeetCode 문제 풀이
 
 - [26. Remove Duplicates from Sorted Array](./leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
