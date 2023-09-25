@@ -115,7 +115,7 @@ Show me the code:
 
 ## Improve
 
-- 예제에서는 1 단계 깊이까지만 탐색하고 있습니다.
+- 예제에서는 1 단계 깊이까지만 탐색하고 있습니다. 아래처럼 깊이가 깊어지면 더 이상 Simple 애노테이션을 탐색하지 못합니다.
   ```java
   @ComposedAnnotation
   @Target(ElementType.TYPE)
@@ -123,7 +123,6 @@ Show me the code:
   public @interface ComposedComposedAnnotation {
   }
   ```
-  처럼 깊이가 깊어지면 더 이상 Simple 애노테이션을 탐색하지 못합니다.
 - 메타 애노테이션 탐색을 재귀적으로 수행하면 모든 메타 애노테이션을 탐색할 수 있습니다.
 
 ## Real World
