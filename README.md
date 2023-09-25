@@ -22,6 +22,11 @@
 - [자바 Custom Composed Annotation 처리](./java/자바%20Custom%20Composed%20Annotation%20처리/README.md)
   | [Medium](https://medium.com/@daengdaenglee/%EC%9E%90%EB%B0%94-custom-composed-annotation-%EC%B2%98%EB%A6%AC-97cc83b8550d)
 
+### Web3
+
+- [안전하게 이더리움 지갑 주인 인증하기](./web3/안전하게%20이더리움%20지갑%20주인%20인증하기/README.md)
+  | [Medium](https://medium.com/@daengdaenglee/%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EC%A7%80%EA%B0%91-%EC%A3%BC%EC%9D%B8-%EC%9D%B8%EC%A6%9D%ED%95%98%EA%B8%B0-63d8b37df0f0)
+
 # LeetCode 문제 풀이
 
 - [26. Remove Duplicates from Sorted Array](./leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
