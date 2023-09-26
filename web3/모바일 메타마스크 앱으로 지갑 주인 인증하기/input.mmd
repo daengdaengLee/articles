@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    participant M as MetaMask App
+    participant B as MetaMask In-App Browser
+    C ->>+ S: request authentication
+    Note right of S: create authentication trial with UUID key
+    S -->>- C: trial UUID key
+    C -) M: deeplink to authentication page with trial key
+    M -) B: open authentication page with in-app browser
+    Note right of B: retrieve trial key from URL
+    B ->>+ M: request public key (Eth address)
+    M -->>- B: public key
+    B ->>+ S: trial key + public key
+    Note left of S: find trail with key<br/>create UUID<br/>save UUID + public key with the trial
+    S -->>- B: UUID
+    B ->>+ M: request to sign UUID
+    Note left of M: Sign UUID with private key
+    M -->>- B: signature
+    B ->>+ S: trial key + signature
+    Note left of S: find trial with key<br/>verify signature using saved UUID and public key<br/>save result with trial
+    S -->>-B: success or fail
+    Note right of B: show result page including "go back to client" message
+    B -) C: go back to client
+    C ->>+ S: trial key
+    Note right of S: find trial with key<br/>check result of trial
+    S -->>- C: success or fail (token if needed)
