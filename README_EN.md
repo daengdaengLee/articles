@@ -21,3 +21,5 @@ deploying platform:
 
 - [Authenticate Ethereum Wallet Owner Securely](./web3/안전하게%20이더리움%20지갑%20주인%20인증하기/README_EN.md)
   | [Medium](https://medium.com/@daengdaenglee/authenticate-ethereum-wallet-owner-securely-4d09376cc492)
+- [Authenticate Ethereum Wallet Owner with Mobile MetaMask App](./web3/모바일%20메타마스크%20앱으로%20지갑%20주인%20인증하기/README_EN.md)
+  | [Medium](https://medium.com/@daengdaenglee/authenticate-ethereum-wallet-owner-with-mobile-metamask-app-78e275ee8eea)
