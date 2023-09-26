@@ -26,6 +26,8 @@
 
 - [안전하게 이더리움 지갑 주인 인증하기](./web3/안전하게%20이더리움%20지갑%20주인%20인증하기/README.md)
   | [Medium](https://medium.com/@daengdaenglee/%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EC%9D%B4%EB%8D%94%EB%A6%AC%EC%9B%80-%EC%A7%80%EA%B0%91-%EC%A3%BC%EC%9D%B8-%EC%9D%B8%EC%A6%9D%ED%95%98%EA%B8%B0-63d8b37df0f0)
+- [모바일 메타마스크 앱으로 지갑 주인 인증하기](./web3/모바일%20메타마스크%20앱으로%20지갑%20주인%20인증하기/README.md)
+  | [Medium](https://medium.com/@daengdaenglee/%EB%AA%A8%EB%B0%94%EC%9D%BC-%EB%A9%94%ED%83%80%EB%A7%88%EC%8A%A4%ED%81%AC-%EC%95%B1%EC%9C%BC%EB%A1%9C-%EC%A7%80%EA%B0%91-%EC%A3%BC%EC%9D%B8-%EC%9D%B8%EC%A6%9D%ED%95%98%EA%B8%B0-8f10a34e7ed4)
 
 # LeetCode 문제 풀이
 
