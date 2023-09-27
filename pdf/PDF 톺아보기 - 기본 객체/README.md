@@ -137,3 +137,8 @@ endobj
 ## Next
 
 - PDF 파일 구조에 대해 알아봅시다.
+
+## Reference
+
+- [PDF 스펙 문서](https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/PDF32000_2008.pdf)
+ 
