@@ -29,6 +29,11 @@
 - [모바일 메타마스크 앱으로 지갑 주인 인증하기](./web3/모바일%20메타마스크%20앱으로%20지갑%20주인%20인증하기/README.md)
   | [Medium](https://medium.com/@daengdaenglee/%EB%AA%A8%EB%B0%94%EC%9D%BC-%EB%A9%94%ED%83%80%EB%A7%88%EC%8A%A4%ED%81%AC-%EC%95%B1%EC%9C%BC%EB%A1%9C-%EC%A7%80%EA%B0%91-%EC%A3%BC%EC%9D%B8-%EC%9D%B8%EC%A6%9D%ED%95%98%EA%B8%B0-8f10a34e7ed4)
 
+### PDF
+
+- [PDF 톺아보기 - 기본 객체](./pdf/PDF%20톺아보기%20-%20기본%20객체/README.md)
+  | [Medium](https://medium.com/@daengdaenglee/pdf-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0-%EA%B8%B0%EB%B3%B8-%EA%B0%9D%EC%B2%B4-f30efe8155a9)
+
 # LeetCode 문제 풀이
 
 - [26. Remove Duplicates from Sorted Array](./leetcode/26.%20Remove%20Duplicates%20from%20Sorted%20Array/README.md)
