@@ -1,4 +1,4 @@
-# Exploring PDF - Basic Objects
+# Exploring PDF - Basic Object
 
 ## TL;DR
 
