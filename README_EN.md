@@ -28,3 +28,8 @@ deploying platform:
   | [Medium](https://medium.com/@daengdaenglee/authenticate-ethereum-wallet-owner-securely-4d09376cc492)
 - [Authenticate Ethereum Wallet Owner with Mobile MetaMask App](./web3/모바일%20메타마스크%20앱으로%20지갑%20주인%20인증하기/README_EN.md)
   | [Medium](https://medium.com/@daengdaenglee/authenticate-ethereum-wallet-owner-with-mobile-metamask-app-78e275ee8eea)
+
+### PDF
+
+- [Exploring PDF - Basic Object](./pdf/PDF%20톺아보기%20-%20기본%20객체/README_EN.md)
+  | [Medium](https://medium.com/@daengdaenglee/exploring-pdf-basic-object-275a6a694c72)
