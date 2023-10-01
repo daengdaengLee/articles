@@ -22,6 +22,11 @@
 - [자바 Custom Composed Annotation 처리](./java/자바%20Custom%20Composed%20Annotation%20처리/README.md)
   | [Medium](https://medium.com/@daengdaenglee/%EC%9E%90%EB%B0%94-custom-composed-annotation-%EC%B2%98%EB%A6%AC-97cc83b8550d)
 
+### Architecture
+
+- [낙관적 Lock 톺아보기](./architecture/낙관적%20Lock%20톺아보기/README.md)
+  | [Medium](https://medium.com/@daengdaenglee/%EB%82%99%EA%B4%80%EC%A0%81-lock-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0-f9210bc1c7aa)
+
 ### Web3
 
 - [안전하게 이더리움 지갑 주인 인증하기](./web3/안전하게%20이더리움%20지갑%20주인%20인증하기/README.md)
