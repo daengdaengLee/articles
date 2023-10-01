@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant C1 as Client1
+    participant S as Server
+    participant C2 as Client2
+    Note over S: Group(id=1, version=1)<br/>Item(id=1, group_id=1)
+    C1 ->> S: create new item in Group(id=1, verion=1)
+    Note left of S: create Item(id=2, group_id=1) -> S-Lock on Group(id=1)
+    C2 ->> S: create new item in Group(id=1, version=1)
+    Note right of S: create Item(id=3, group_id=1) -> S-Lock on Group(id=1)
+    Note left of S: try update Group(id=1, version=1) to Group(id=1, version=2)<br/>-> need X-Lock on Group(id=1)<br/>->Wait because S-Lock on right
+    Note right of S: try update Group(id=1, version=1) to Group(id=1, version=2)<br/>-> need X-Lock on Group(id=1)<br/>->Wait because S-Lock on left

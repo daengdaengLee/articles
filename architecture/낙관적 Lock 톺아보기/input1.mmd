@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant C1 as Client1
+    participant S as Server (DB)
+    participant C2 as Client2
+    Note over S: Character(id=1, version=1, name="Anakin Skywalker")
+    C1 -> S: SELECT -> Character(id=1, version=1, name="Anakin Skywalker")
+    C2 -> S: SELECT -> Character(id=1, version=1, name="Anakin Skywalker")
+    C1 ->>+ S: UPDATE -> Character(id=1, version=1, name="Chosen One")
+    Note over S: id=1 AND version=1 is matched -> DO UPDATE
+    Note over S: Character(id=1, version=2, name="Chosen One")
+    S -->>- C1: updated row 1
+    C2 ->>+ S: UPDATE -> Character(id=1, version=1, name="Darth Vader")
+    Note over S: id=1 AND version=1 is NOT matched -> DO NOT UPDATE
+    S -->>- C2: updated row 0 -> OptimisticLockException (on Application Level)

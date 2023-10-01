@@ -1,0 +1,10 @@
+erDiagram
+    Group ||--o{ Item: includes
+    Group {
+        int id PK
+        int version
+    }
+    Item {
+        id id PK
+        int group_id FK
+    }

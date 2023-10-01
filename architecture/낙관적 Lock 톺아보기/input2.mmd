@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant PC
+    participant Server
+    participant Mobile
+    Note over Server: Member(id=1, version=1, name="michael")
+    PC ->>+ Server: GET /members/1
+    Mobile ->>+ Server: GET /members/1
+    Server -->>- Mobile: Member(id=1, version=1, name="michael")
+    Server -->>- PC: Member(id=1, version=1, name="michael")
+    PC ->>+ Server: PUT /member1/1 {"version": 1, "name": "Michael Jordan"}
+    Note over Server: version matched -> do update
+    Note over Server: Member(id=1, version=2, name="Michael Jordan")
+    Mobile ->>+ Server: PUT /members/1 {"version": 1, "name": michael jordan"}
+    Note over Server: version mismatched -> do not update
+    Server -->>- Mobile: Error: check newest data
+    Server -->>- PC: Success: Member(id=1, version=2, name="Michael Jordan")
