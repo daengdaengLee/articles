@@ -1,0 +1,9 @@
+flowchart RL
+    subgraph HexModule
+        OutboundPortC
+        OutboundPortD
+    end
+    subgraph OutboundAdapter
+        DbRepository -. impl .-> OutboundPortC
+        MessagePublisher -. impl .-> OutboundPortD
+    end

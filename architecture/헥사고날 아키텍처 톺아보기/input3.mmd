@@ -1,0 +1,10 @@
+flowchart LR
+    subgraph HexModule
+        InboundPortA
+        InboundPortB
+    end
+    subgraph InboundAdapter
+        RestController -- use --> InboundPortA
+        RestController -- use --> InboundPortB
+        GrpcController -- use --> InboundPortB
+    end

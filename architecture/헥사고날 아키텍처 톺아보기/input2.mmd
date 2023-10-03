@@ -1,0 +1,7 @@
+flowchart LR
+    subgraph HexModule
+        InboundPortA -. impl .-> Service
+        InboundPortB -. impl .-> Service
+        Service -- use --> OutboundPortC
+        Service -- use --> OutboundPortD
+    end

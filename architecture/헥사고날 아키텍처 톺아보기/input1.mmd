@@ -1,0 +1,16 @@
+flowchart LR
+    subgraph HexModule
+        InboundPortA -. impl .-> Service
+        InboundPortB -. impl .-> Service
+        Service -- use --> OutboundPortC
+        Service -- use --> OutboundPortD
+    end
+    subgraph InboundAdapter
+        RestController -- use --> InboundPortA
+        RestController -- use --> InboundPortB
+        GrpcController -- use --> InboundPortB
+    end
+    subgraph OutboundAdapter
+        DbRepository -. impl .-> OutboundPortC
+        MessagePublisher -. impl .-> OutboundPortD
+    end
