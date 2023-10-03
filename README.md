@@ -26,6 +26,8 @@
 
 - [낙관적 Lock 톺아보기](./architecture/낙관적%20Lock%20톺아보기/README.md)
   | [Medium](https://medium.com/@daengdaenglee/%EB%82%99%EA%B4%80%EC%A0%81-lock-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0-f9210bc1c7aa)
+- [헥사고날 아키텍처 톺아보기](./architecture/헥사고날%20아키텍처%20톺아보기/README.md)
+  | [Medium](https://medium.com/@daengdaenglee/%ED%97%A5%EC%82%AC%EA%B3%A0%EB%82%A0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0-5bd7eebf9672)
 
 ### Web3
 
