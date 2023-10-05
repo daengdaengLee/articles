@@ -19,7 +19,7 @@ deploying platform:
 
 ### Java
 
-- [자바 Custom Composed Annotation 처리](./java/자바%20Custom%20Composed%20Annotation%20처리/README_EN.md)
+- [Handling Java Custom Composed Annotations](./java/자바%20Custom%20Composed%20Annotation%20처리/README_EN.md)
   | [Medium](https://medium.com/@daengdaenglee/handling-java-custom-composed-annotations-2277f10c576e)
 
 ### Architecture
