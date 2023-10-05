@@ -26,6 +26,8 @@ deploying platform:
 
 - [Exploring Optimistic Locking](./architecture/낙관적%20Lock%20톺아보기/README_EN.md)
   | [Medium](https://medium.com/@daengdaenglee/exploring-optimistic-locking-c2f7c2ccf4fd)
+- [Exploring Hexagonal Architecture](./architecture/헥사고날%20아키텍처%20톺아보기/README_EN.md)
+  | [Medium](https://medium.com/@daengdaenglee/exploring-hexagonal-architecture-ba5553df0d14)
 
 ### Web3
 
