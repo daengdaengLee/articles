@@ -17,6 +17,11 @@ deploying platform:
 - [Asynchronous Concurrent Processing that Keeping Order](./nodejs/%EC%88%9C%EC%84%9C%EB%A5%BC%20%EC%9C%A0%EC%A7%80%ED%95%98%EB%8A%94%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EB%8F%99%EC%8B%9C%20%EC%B2%98%EB%A6%AC/README_EN.md)
   | [Medium](https://medium.com/@daengdaenglee/asynchronous-concurrent-processing-that-keeping-order-bc6daad6c68b)
 
+### Java
+
+- [자바 Custom Composed Annotation 처리](./java/자바%20Custom%20Composed%20Annotation%20처리/README_EN.md)
+  | [Medium](https://medium.com/@daengdaenglee/handling-java-custom-composed-annotations-2277f10c576e)
+
 ### Architecture
 
 - [Exploring Optimistic Locking](./architecture/낙관적%20Lock%20톺아보기/README_EN.md)
